@@ -1,25 +1,25 @@
 {
-  "name": "hexo-admonition",
-  "version": "1.1.0",
+  "name": "hexo-admonition-better",
+  "version": "1.1.3",
   "description": "Add block-styled admonition to hexo, e.g. note, warning or error. | Hexo内容辅助插件，支持向文档中添加如提示、警告、错误等块式内容。",
-  "homepage": "https://www.lixl.cn/2020/041837756.html",
-  "main": "index",
-  "author": "悟尘 <me@lixl.cn> (http://lixl.cn)",
-  "bugs": {
-    "url": "https://github.com/lxl80/hexo-admonition/issues"
-  },
+  "homepage": "https://github.com/rqh656418510/hexo-admonition-better",
+  "main": "index.js",
+  "author": "rqh656418510",
   "keywords": [
     "hexo",
     "admonition",
-    "note"
+    "note",
+    "info",
+    "warning"
   ],
   "dependencies": {
+    "clean-css": "^5.1.2",
     "markdown-it": "^9.1.0"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lxl80/hexo-admonition.git"
+    "url": "git+https://github.com/rqh656418510/hexo-admonition-better.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
