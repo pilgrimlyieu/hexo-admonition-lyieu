@@ -4,7 +4,7 @@
 
 Hexo 内容辅助插件，支持将类似 [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html) 的警告提示块添加到 Markdown 文档中。例如 note、warning、error 等提示块，效果如图：
 
-![hexo-admonition-better 示例效果](./screenshot/demo.png)
+![hexo-admonition-better 示例效果](screenshot/demo.png)
 
 开发这个插件的动机，是想让 [hexo](https://hexo.io) 与 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/extensions/admonition/) 的提示信息兼容，让系列文章在基于 MkDocs 搭建的子站中有更好的阅读体验。
 
@@ -46,7 +46,7 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 最终呈现效果如下：
 
-![hexo-admonition-better 插件 note 提示示例](./screenshot/note.png)
+![hexo-admonition-better 插件 note 提示示例](screenshot/note.png)
 
 ### 支持的类型
 
@@ -68,7 +68,7 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 效果如下：
 
-![默认标题警告提示块](./screenshot/warning.png)
+![默认标题警告提示块](screenshot/warning.png)
 
 如果不想显示标题，可以将 `title` 设置为 `""`：
 
@@ -79,7 +79,7 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 效果如下：
 
-![无标题警告提示块](./screenshot/warning-no-title.png)
+![无标题警告提示块](screenshot/warning-no-title.png)
 
 ### 嵌套 markdown 标记
 
@@ -94,7 +94,7 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 效果如下:
 
-![嵌套效果](./screenshot/nesting.png)
+![嵌套效果](screenshot/nesting.png)
 
 ### 样式自定义
 
