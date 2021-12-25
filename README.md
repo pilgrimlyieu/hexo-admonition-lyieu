@@ -176,6 +176,27 @@ p.admonition-title {
 }
 ```
 
+## 适配 Hexo 主题
+
+### NexT 主题
+
+若 Hexo 使用的是 NexT 主题，则需要在 NexT 主题的 `_config.yml` 配置文件里，将 `note` 的 `style` 参数设置为 `disabled`，否则会影响上述插件 `note` 类型的样式显示，完整的配置信息如下：
+
+``` yml
+# Note tag (bootstrap callout)
+note:
+  # Note tag style values:
+  #  - simple    bootstrap callout old alert style. Default.
+  #  - modern    bootstrap callout new (v2-v3) alert style.
+  #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
+  #  - disabled  disable all CSS styles import of note tag.
+  style: disabled
+  icons: false
+  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+  # Offset also applied to label tag variables. This option can work with disabled note tag.
+  light_bg_offset: 0
+```
+
 ## License
 
 MIT
