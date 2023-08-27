@@ -17,7 +17,7 @@
   - [markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)
   - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
 
-以前内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
+以下内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
 
 # hexo-admonition-better 插件安装使用指南
 

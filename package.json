@@ -1,16 +1,14 @@
 {
-  "name": "hexo-admonition-better",
-  "version": "1.1.5",
+  "name": "hexo-admonition-lyieu",
+  "version": "1.0.0",
   "description": "Add block-styled admonition to hexo, e.g. note, warning or error. | Hexo内容辅助插件，支持向文档中添加如提示、警告、错误等块式内容。",
-  "homepage": "https://github.com/rqh656418510/hexo-admonition-better",
+  "homepage": "https://github.com/pilgrimlyieu/hexo-admonition-lyieu",
   "main": "index.js",
-  "author": "rqh656418510",
+  "author": "pilgrimlyieu",
   "keywords": [
     "hexo",
     "admonition",
-    "note",
-    "info",
-    "warning"
+    "markdown"
   ],
   "dependencies": {
     "clean-css": "^5.1.2",
@@ -19,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rqh656418510/hexo-admonition-better.git"
+    "url": "git+git@github.com:pilgrimlyieu/hexo-admonition-lyieu.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
