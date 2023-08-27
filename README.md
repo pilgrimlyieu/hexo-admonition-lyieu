@@ -1,3 +1,24 @@
+# 前言
+
+本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能：
+
+- 加入了 example 与 quote 类型的 admonition
+- 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
+- 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件（需自行安装）
+  - [@renbaoshuo/markdown-it-katex](https://github.com/renbaoshuo/markdown-it-katex)
+  - [markdown-it-abbr](https://github.com/markdown-it/markdown-it-abbr)
+  - [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji)
+  - [markdown-it-footnote](https://github.com/markdown-it/markdown-it-footnote)
+  - [markdown-it-ins](https://github.com/markdown-it/markdown-it-ins)
+  - [markdown-it-mark](https://github.com/markdown-it/markdown-it-mark)
+  - [markdown-it-merge-cells](https://github.com/Menci/markdown-it-merge-cells)
+  - [markdown-it-multimd-table](https://github.com/redbug312/markdown-it-multimd-table)
+  - [markdown-it-sub](https://github.com/markdown-it/markdown-it-sub)
+  - [markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)
+  - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
+
+以前内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
+
 # hexo-admonition-better 插件安装使用指南
 
 ## 简介
