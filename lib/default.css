@@ -93,74 +93,44 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 
+.note > .admonition-title {
+  background-color: rgba(66, 185, 131, 0.4);
+}
+
+.info > .admonition-title,
+.todo > .admonition-title {
+  background-color: rgba(0, 184, 212, 0.4);
+}
+
+.warning > .admonition-title,
+.attention > .admonition-title,
+.caution > .admonition-title {
+  background-color: rgba(255, 145, 0, 0.4);
+}
+
+.failure > .admonition-title,
+.missing > .admonition-title,
+.fail > .admonition-title,
+.error > .admonition-title {
+  background-color: rgba(255, 82, 82, 0.4);
+}
+
+.example > .admonition-title {
+  background-color: rgba(124, 77, 255, 0.4);
+}
+
+.quote > .admonition-title {
+  background-color: rgba(170, 170, 170, 0.4);
+}
+
 @media (prefers-color-scheme: light) {
   .admonition {
     background-color: #eeeeee;
-  }
-
-  .note > .admonition-title {
-    background-color: rgba(66, 185, 131, 0.4);
-  }
-
-  .info > .admonition-title,
-  .todo > .admonition-title {
-    background-color: rgba(0, 184, 212, 0.4);
-  }
-
-  .warning > .admonition-title,
-  .attention > .admonition-title,
-  .caution > .admonition-title {
-    background-color: rgba(255, 145, 0, 0.4);
-  }
-
-  .failure > .admonition-title,
-  .missing > .admonition-title,
-  .fail > .admonition-title,
-  .error > .admonition-title {
-    background-color: rgba(255, 82, 82, 0.4);
-  }
-
-  .example > .admonition-title {
-    background-color: rgba(124, 77, 255, 0.4);
-  }
-
-  .quote > .admonition-title {
-    background-color: rgba(170, 170, 170, 0.4);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .admonition {
     background-color: #444444;
-  }
-
-  .note > .admonition-title {
-    background-color: rgba(66, 185, 131, 0.4);
-  }
-
-  .info > .admonition-title,
-  .todo > .admonition-title {
-    background-color: rgba(0, 184, 212, 0.4);
-  }
-
-  .warning > .admonition-title,
-  .attention > .admonition-title,
-  .caution > .admonition-title {
-    background-color: rgba(255, 145, 0, 0.4);
-  }
-
-  .failure > .admonition-title,
-  .missing > .admonition-title,
-  .fail > .admonition-title,
-  .error > .admonition-title {
-    background-color: rgba(255, 82, 82, 0.4);
-  }
-
-  .example > .admonition-title {
-    background-color: rgba(124, 77, 255, 0.4);
-  }
-
-  .quote > .admonition-title {
-    background-color: rgba(170, 170, 170, 0.4);
   }
 }

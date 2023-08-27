@@ -2,7 +2,7 @@
 
 本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能：
 
-- 加入了 example 与 quote 类型的 admonition
+- 加入了 question, success, danger, bug, example, quote, tip, abstract, test 等类型的 admonition（移除了 fail）
 - 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
 - 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件（需自行安装）
   - [@renbaoshuo/markdown-it-katex](https://github.com/renbaoshuo/markdown-it-katex)
