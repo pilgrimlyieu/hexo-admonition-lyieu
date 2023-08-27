@@ -1,7 +1,7 @@
 {
   "name": "hexo-admonition-lyieu",
-  "version": "1.0.0",
-  "description": "Add block-styled admonition to hexo, e.g. note, warning or error. | Hexo内容辅助插件，支持向文档中添加如提示、警告、错误等块式内容。",
+  "version": "2.0.0",
+  "description": "PilgrimLyieu's hexo-admonition",
   "homepage": "https://github.com/pilgrimlyieu/hexo-admonition-lyieu",
   "main": "index.js",
   "author": "pilgrimlyieu",
