@@ -1,7 +1,18 @@
-var md = require('markdown-it')('commonmark');
+var md = require('markdown-it')({html: true, xhtmlOut: false, langPrefix: 'language-', breaks: true, linkify: true, typographer: true, quotes: '「」『』'})
+            .use(require('@renbaoshuo/markdown-it-katex'), {skipDelimitersCheck: true})
+            .use(require('markdown-it-abbr'))
+            .use(require('markdown-it-emoji'))
+            .use(require('markdown-it-footnote'))
+            .use(require('markdown-it-ins'))
+            .use(require('markdown-it-mark'))
+            .use(require('markdown-it-merge-cells'))
+            .use(require('markdown-it-multimd-table'), {multiline: false, rowspan: true, headerless: true, multibody: true, aotolabel: true})
+            .use(require('markdown-it-sub'))
+            .use(require('markdown-it-sup'))
+            .use(require('markdown-it-task-list-plus'));
 
 hexo.extend.filter.register('before_post_render', function (data) {
-  let strRegExp = '(?<=^\n)(^!!! *)(note|info|todo|warning|attention|caution|failure|missing|fail|error)(.*\n)((^ {4}.*\n|^\n)+)';
+  let strRegExp = '(?<=^\n)(^!!! *)(note|info|todo|warning|attention|caution|failure|missing|fail|error|example|quote)(.*\n)((^ {4}.*\n|^\n)+)';
   let admonitionRegExp = new RegExp(strRegExp, 'gmi');
 
   let strData;
