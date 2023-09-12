@@ -10,6 +10,9 @@
     "admonition",
     "markdown"
   ],
+  "dependencies": {
+    "clean-css": "^5.1.2"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
