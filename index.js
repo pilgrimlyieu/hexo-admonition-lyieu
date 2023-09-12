@@ -1,4 +1,4 @@
-var md = require('markdown-it')({html: true, xhtmlOut: false, langPrefix: 'language-', breaks: true, linkify: true, typographer: true, quotes: '「」『』'})
+var md = require('markdown-it')({html: true, xhtmlOut: false, langPrefix: 'language-', breaks: true, linkify: true, typographer: true, quotes: ''})
             .use(require('@renbaoshuo/markdown-it-katex'), {skipDelimitersCheck: true})
             .use(require('markdown-it-abbr'))
             .use(require('markdown-it-emoji'))
