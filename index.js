@@ -1,15 +1,32 @@
-var md = require('markdown-it')({html: true, xhtmlOut: false, langPrefix: 'language-', breaks: true, linkify: true, typographer: true, quotes: '""\'\''})
-            .use(require('@renbaoshuo/markdown-it-katex'), {skipDelimitersCheck: true})
-            .use(require('markdown-it-abbr'))
-            .use(require('markdown-it-emoji'))
-            .use(require('markdown-it-footnote'))
-            .use(require('markdown-it-ins'))
-            .use(require('markdown-it-mark'))
-            .use(require('markdown-it-merge-cells'))
-            .use(require('markdown-it-multimd-table'), {multiline: false, rowspan: true, headerless: true, multibody: true, aotolabel: true})
-            .use(require('markdown-it-sub'))
-            .use(require('markdown-it-sup'))
-            .use(require('markdown-it-task-list-plus'));
+var md = require('markdown-it')({
+    html: true,
+    xhtmlOut: false,
+    langPrefix: 'language-',
+    breaks: true,
+    linkify: true,
+    typographer: true,
+})
+    .disable([ 'smartquotes' ])
+    .use(require('@renbaoshuo/markdown-it-katex'), {
+        skipDelimitersCheck: true
+    })
+    .use(require('markdown-it-abbr'))
+    .use(require('markdown-it-emoji'))
+    .use(require('markdown-it-footnote'))
+    .use(require('markdown-it-ins'))
+    .use(require('markdown-it-mark'))
+    .use(require('markdown-it-merge-cells'))
+    .use(require('markdown-it-multimd-table'), {
+        multiline: false,
+        rowspan: true,
+        headerless: true,
+        multibody: true,
+        aotolabel: true
+    })
+    .use(require('markdown-it-sub'))
+    .use(require('markdown-it-sup'))
+    .use(require('markdown-it-task-list-plus')
+);
 
 hexo.extend.filter.register('before_post_render', function (data) {
   let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|test)(.*\n)((^ {4}.*\n|^\n)+)';
