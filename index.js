@@ -29,7 +29,7 @@ var md = require('markdown-it')({
 );
 
 hexo.extend.filter.register('before_post_render', function (data) {
-  let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|test)(.*\n)((^ {4}.*\n|^\n)+)';
+  let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(.*\n)((^ {4}.*\n|^\n)+)';
   let admonitionRegExp = new RegExp(strRegExp, 'gmi');
 
   let strData;
