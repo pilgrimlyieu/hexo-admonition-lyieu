@@ -2,7 +2,7 @@
   font-size: 0.96em;
   margin: 1.5625em 0;
   padding: 0.6rem;
-  overflow: hidden;
+  overflow: visible;
   page-break-inside: avoid;
   border-left: 0.3rem solid;
   border-radius: 0.3rem;
