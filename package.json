@@ -1,6 +1,6 @@
 {
   "name": "hexo-admonition-lyieu",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "PilgrimLyieu's hexo-admonition",
   "homepage": "https://github.com/pilgrimlyieu/hexo-admonition-lyieu",
   "main": "index.js",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:pilgrimlyieu/hexo-admonition-lyieu.git"
+    "url": "git+ssh://git@github.com:pilgrimlyieu/hexo-admonition-lyieu.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
