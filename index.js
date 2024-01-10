@@ -15,9 +15,8 @@ var md = require('markdown-it')({
     .use(require('markdown-it-footnote'))
     .use(require('markdown-it-ins'))
     .use(require('markdown-it-mark'))
-    .use(require('markdown-it-merge-cells'))
     .use(require('markdown-it-multimd-table'), {
-        multiline: false,
+        multiline: true,
         rowspan: true,
         headerless: true,
         multibody: true,
