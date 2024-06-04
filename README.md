@@ -2,6 +2,8 @@
 
 本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能：
 
+- **修复了多层级有序/无序列表未正确渲染的问题**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
+- **解决了 ADM 内脚注与主体 Markdown 或其它 ADM冲突的问题，可能还需[额外配置](#脚注额外配置)**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
 - 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail）
 - 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
 - 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件（需自行安装）
@@ -18,6 +20,37 @@
   - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
 
 以下内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
+
+## 使用
+
+### 脚注额外配置
+
+为了避免冲突，将脚注的锚点改为了脚注名称，即 `[^footnote]` 锚点会变成 `#fn-footnote`，因此脚注名称需要认真取。此外，这里只修改了 ADM 内部，可能会使外部引用处锚点无法到脚注处，解决方法是在 Hexo 根目录的 `scripts` 文件夹建一个 `footnote.js` 文件，并输入下列内容：
+
+```js
+hexo.extend.filter.register('markdown-it:renderer', function(md) {
+  md.renderer.rules.footnote_ref = function(tokens, idx, options, env, slf) {
+    let id = tokens[idx].meta.label;  // 获取脚注名
+    let caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
+
+    let refcnt = '';
+    if (tokens[idx].meta.refcnt) {
+      refcnt = ` data-footnote-refcnt="${tokens[idx].meta.refcnt}"`;
+    }
+
+    return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>${caption}</a></sup>`;
+  };
+
+  md.renderer.rules.footnote_anchor = function(tokens, idx, options, env, slf) {
+    let id = tokens[idx].meta.label;  // 获取脚注名
+
+    /* ↩ with escape code to prevent display as Apple Emoji on iOS */
+  return ` <a href="#fnref-${id}" id="fn-${id}" class="footnote-backref">\u21a9\uFE0E</a>`;
+  };
+});
+```
+
+这样将外部的脚注锚点名规则与 ADM 弄一致，就不会冲突了。
 
 # hexo-admonition-better 插件安装使用指南
 
