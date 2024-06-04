@@ -1,6 +1,6 @@
 {
   "name": "hexo-admonition-lyieu",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "PilgrimLyieu's hexo-admonition",
   "homepage": "https://github.com/pilgrimlyieu/hexo-admonition-lyieu",
   "main": "index.js",
@@ -11,7 +11,14 @@
     "markdown"
   ],
   "dependencies": {
-    "clean-css": "^5.1.2"
+    "clean-css": "^5.1.2",
+    "@renbaoshuo/markdown-it-katex": "^2.0.2",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-emoji": "^2.0.2",
+    "markdown-it-multimd-table": "^4.2.3",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
+    "markdown-it-task-list-plus": "^2.1.3"
   },
   "license": "MIT",
   "repository": {
