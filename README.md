@@ -19,8 +19,6 @@
   - [markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)
   - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
 
-以下内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
-
 ## 使用
 
 ### 脚注额外配置
@@ -51,6 +49,8 @@ hexo.extend.filter.register('markdown-it:renderer', function(md) {
 ```
 
 这样将外部的脚注锚点名规则与 ADM 弄一致，就不会冲突了。
+
+以下内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
 
 # hexo-admonition-better 插件安装使用指南
 
