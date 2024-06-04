@@ -19,6 +19,16 @@
   - [markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)
   - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
 
+## 安装
+
+未发布到 NPM，因此不能直接用 `npm i hexo-admonition-lyieu` 进行安装。
+
+执行下面的命令进行安装
+
+```bash
+npm i github:pilgrimlyieu/hexo-admonition-lyieu
+```
+
 ## 使用
 
 ### 脚注额外配置
