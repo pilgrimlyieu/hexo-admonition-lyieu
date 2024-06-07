@@ -27,15 +27,15 @@ var md = require('markdown-it')({
   .use(require('markdown-it-task-list-plus')
 );
 md.renderer.rules.footnote_ref = function(tokens, idx, options, env, slf) {
-let id = tokens[idx].meta.label;  // 获取脚注名
-let caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
+  let id = tokens[idx].meta.label;  // 获取脚注名
+  let caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
 
-let refcnt = '';
-if (tokens[idx].meta.refcnt) {
-  refcnt = ` data-footnote-refcnt="${tokens[idx].meta.refcnt}"`;
-}
+  let refcnt = '';
+  if (tokens[idx].meta.refcnt) {
+    refcnt = ` data-footnote-refcnt="${tokens[idx].meta.refcnt}"`;
+  }
 
-return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>${caption}</a></sup>`;
+  return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>${caption}</a></sup>`;
 };
 
 md.renderer.rules.footnote_anchor = function(tokens, idx, options, env, slf) {
