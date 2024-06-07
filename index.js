@@ -39,32 +39,32 @@ return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>
 };
 
 md.renderer.rules.footnote_anchor = function(tokens, idx, options, env, slf) {
-let id = tokens[idx].meta.label;  // 获取脚注名
+  let id = tokens[idx].meta.label;  // 获取脚注名
 
-/* ↩ with escape code to prevent display as Apple Emoji on iOS */
-return ` <a href="#fnref-${id}" id="fn-${id}" class="footnote-backref">\u21a9\uFE0E</a>`;
+  /* ↩ with escape code to prevent display as Apple Emoji on iOS */
+  return ` <a href="#fnref-${id}" id="fn-${id}" class="footnote-backref">\u21a9\uFE0E</a>`;
 };
 
 hexo.extend.filter.register('before_post_render', function (data) {
-let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(.*\n)((^ {4}.*\n|^\n)+)';
-let admonitionRegExp = new RegExp(strRegExp, 'gmi');
+  let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(.*\n)((^ {4}.*\n|^\n)+)';
+  let admonitionRegExp = new RegExp(strRegExp, 'gmi');
 
-let strData;
-if (admonitionRegExp.test(data.content)) {
-  strData = data.content.replace(admonitionRegExp, function (matchStr, p1, p2, p3, p4) {
-    p4 = p4.replace(/(^ {4})/gm, '');
+  let strData;
+  if (admonitionRegExp.test(data.content)) {
+    strData = data.content.replace(admonitionRegExp, function (matchStr, p1, p2, p3, p4) {
+      p4 = p4.replace(/(^ {4})/gm, '');
 
-    if (p3.replace(/\s+/g, '') === '""') {
-      return '<div class="admonition ' + p2.toLowerCase() + '">' + md.render(p4) + '</div>\n\n';
-    } else {
-      p3 = p3.trim() === '' ? p2 : p3.replace(/(^ |")|("| $)/g, '');
-      return '<div class="admonition ' + p2.toLowerCase() + '"><p class="admonition-title">' + p3 + '</p>' + md.render(p4) + '</div>\n\n';
-    }
-  });
-  data.content = strData;
-}
+      if (p3.replace(/\s+/g, '') === '""') {
+        return '<div class="admonition ' + p2.toLowerCase() + '">' + md.render(p4) + '</div>\n\n';
+      } else {
+        p3 = p3.trim() === '' ? p2 : p3.replace(/(^ |")|("| $)/g, '');
+        return '<div class="admonition ' + p2.toLowerCase() + '"><p class="admonition-title">' + p3 + '</p>' + md.render(p4) + '</div>\n\n';
+      }
+    });
+    data.content = strData;
+  }
 
-return data;
+  return data;
 });
 
 hexo.extend.filter.register('after_render:html', require('./lib/addstyle').addStyle);

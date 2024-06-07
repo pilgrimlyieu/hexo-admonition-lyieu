@@ -1,12 +1,14 @@
 # 前言
 
-本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能：
+> **是自用插件**，基本是按本人的需求进行添加特性、修复错误。因此下面可能会有多余的功能，如有需要可以自行修改增删。
+
+本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能、修复了一些错误：
 
 - **修复了多层级有序/无序列表未正确渲染的问题**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
 - **解决了 ADM 内脚注与主体 Markdown 或其它 ADM 冲突的问题，可能还需[额外配置](#脚注额外配置)**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
 - 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail）
 - 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
-- 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件（需自行安装）
+- 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件
   - [@renbaoshuo/markdown-it-katex](https://github.com/renbaoshuo/markdown-it-katex)
   - [markdown-it-abbr](https://github.com/markdown-it/markdown-it-abbr)
   - [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji)
@@ -21,7 +23,7 @@
 
 ## 安装
 
-未发布到 NPM，因此不能直接用 `npm i hexo-admonition-lyieu` 进行安装。
+因为是自用插件，未发布到 NPM，故不能直接用 `npm i hexo-admonition-lyieu` 进行安装。
 
 执行下面的命令进行安装
 
@@ -60,7 +62,7 @@ hexo.extend.filter.register('markdown-it:renderer', function(md) {
 
 这样将外部的脚注锚点名规则与 ADM 弄一致，就不会冲突了。
 
-以下内容来自 rqh656418510/hexo-admonition-better，对本插件不一定可用。
+以下内容来自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，对本插件不一定可用。
 
 # hexo-admonition-better 插件安装使用指南
 
