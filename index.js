@@ -27,15 +27,15 @@ var md = require('markdown-it')({
   .use(require('markdown-it-task-list-plus')
 );
 md.renderer.rules.footnote_ref = function(tokens, idx, options, env, slf) {
-  let id = tokens[idx].meta.label;  // 获取脚注名
-  let caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
+let id = tokens[idx].meta.label;  // 获取脚注名
+let caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
 
-  let refcnt = '';
-  if (tokens[idx].meta.refcnt) {
-    refcnt = ` data-footnote-refcnt="${tokens[idx].meta.refcnt}"`;
-  }
+let refcnt = '';
+if (tokens[idx].meta.refcnt) {
+  refcnt = ` data-footnote-refcnt="${tokens[idx].meta.refcnt}"`;
+}
 
-  return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>${caption}</a></sup>`;
+return `<sup class="footnote-ref"><a href="#fn-${id}" id="fnref-${id}"${refcnt}>${caption}</a></sup>`;
 };
 
 md.renderer.rules.footnote_anchor = function(tokens, idx, options, env, slf) {
@@ -46,22 +46,28 @@ md.renderer.rules.footnote_anchor = function(tokens, idx, options, env, slf) {
 };
 
 hexo.extend.filter.register('before_post_render', function (data) {
-  let strRegExp = '(?<=^\n)(^!!! *)(note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(.*\n)((^ {4}.*\n|^\n)+)';
+  const strRegExp = /(?<indent>^[ \t]*)!!!\s*(?<type>note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(?<title>.*\n)(?<content>(?:^\k<indent> {4}.*\n|^\n)+)/;
   let admonitionRegExp = new RegExp(strRegExp, 'gmi');
 
-  let strData;
   if (admonitionRegExp.test(data.content)) {
-    strData = data.content.replace(admonitionRegExp, function (matchStr, p1, p2, p3, p4) {
-      p4 = p4.replace(/(^ {4})/gm, '');
-
-      if (p3.replace(/\s+/g, '') === '""') {
-        return '<div class="admonition ' + p2.toLowerCase() + '">' + md.render(p4) + '</div>\n\n';
-      } else {
-        p3 = p3.trim() === '' ? p2 : p3.replace(/(^ |")|("| $)/g, '');
-        return '<div class="admonition ' + p2.toLowerCase() + '"><p class="admonition-title">' + p3 + '</p>' + md.render(p4) + '</div>\n\n';
+    data.content = data.content.replace(admonitionRegExp, (match, ...args) => {
+      const groups = args.pop();
+      
+      const requiredIndent = groups.indent.length + 4;
+      const contentIndentRegex = new RegExp(`^ {${requiredIndent}}`, 'gm');
+      const content = groups.content.replace(contentIndentRegex, '');
+      
+      const title = groups.title.trim();
+      let titleHtml = '';
+      
+      if (title !== '""' && title !== '') {
+        const displayTitle = title === '""' ? groups.type : title.replace(/^[" ]+|[" ]+$/g, '');
+        const renderedTitle = md.render(displayTitle).trim();
+        titleHtml = `<p class="admonition-title">${renderedTitle.replace(/^<p>|<\/p>$/g, '')}</p>`;
       }
+      
+      return `<div class="admonition ${groups.type.toLowerCase()}">${titleHtml}${md.render(content)}</div>\n\n`;
     });
-    data.content = strData;
   }
 
   return data;
