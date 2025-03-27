@@ -6,6 +6,7 @@
 
 - **修复了多层级有序/无序列表未正确渲染的问题**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
 - **解决了 ADM 内脚注与主体 Markdown 或其它 ADM 冲突的问题，可能还需[额外配置](#脚注额外配置)**（[2.3.3](https://github.com/pilgrimlyieu/hexo-admonition-lyieu/commit/b317301f2fdf45350b2fe3ea6bdedf31911e8ef5)）
+- **允许缩进（仍要保持 `!!!` 后的内容相较于 `!!!` 的基础缩进至少还有 4 个空格），但不支持嵌套**
 - 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail）
 - 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
 - 增强了 admonition 内 markdown 语法：根据本人需求加入了包括但不限于以下插件
