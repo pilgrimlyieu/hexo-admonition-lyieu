@@ -11,7 +11,7 @@
   line-height: 1.8;
 }
 .admonition > :last-child {
-  margin-bottom: 0 !important;
+  margin: 0 !important;
 }
 .admonition-title::before {
   position: absolute;
