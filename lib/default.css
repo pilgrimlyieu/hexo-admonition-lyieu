@@ -10,8 +10,11 @@
     0 0 0.05rem rgba(0, 0, 0, 0.1);
   line-height: 1.8;
 }
+.admonition > :where(.admonition-title + *, :first-child:not(.admonition-title)) {
+  margin-top: 0 !important;
+}
 .admonition > :last-child {
-  margin: 0 !important;
+margin-bottom: 0 !important;
 }
 .admonition-title::before {
   position: absolute;
