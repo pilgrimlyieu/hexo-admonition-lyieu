@@ -1,8 +1,7 @@
 # 前言
 
 本插件最初 fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，但现已完全重写。适配 [Hexo NexT 主题](https://theme-next.js.org/)，修复了很多问题，同时支持更多特性：
-- 修复了 Admonition 内脚注锚点与外部锚点冲突的问题
-  - **破坏性更改**：Admonition 内的脚注会像外部的脚注一样，显示在在文章底部，而非之前的在 Admonition 内底部。2.4.2 是最后一个支持将脚注显示在 Admonition 内部的版本，**但是存在部分已知严重的问题！**
+- 修复了空标题时显示的间隔问题
 - 支持在 Admonition 标题部分使用 Markdown 语法
 - 允许 Admonition 整体进行缩进
   - 但仍要保证 Admonition 正文相较于首行 `!!!` 还有至少 4 个空格
@@ -10,7 +9,9 @@
 - 广泛支持了 markdown-it 插件，在正文能用什么 markdown-it 插件拓展的 Markdown 语法，在 Admonition 中就能用。
   - 相较于 2.x.x 版本剥离了 `markdown-it` 依赖，不再需要同时维护 Admonition 与正文两个 markdown-it 渲染器，在 3.x.x 版本中 Admonition 会使用正文的 markdown-it 渲染器，因此正文用的插件 Admonition 也都能用。
   - 也就是说下面 2.4.2 版本说明中提及的增强 Markdown 语法不再有效，这取决于你如何配置你的正文 markdown-it 渲染器，这不再是本插件的重点。
-- 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail），总共 8 个类别如下：
+- 解决了 2.x.x 版本的 Admonition 内脚注锚点与外部锚点冲突的问题
+  - **相较 2.4.2 的破坏性更改**：Admonition 内的脚注会像外部的脚注一样，显示在在文章底部，而非之前的在 Admonition 内底部。2.4.2 是最后一个支持将脚注显示在 Admonition 内部的版本，**但是存在部分已知严重的问题！**
+- 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail），总共 9 个类别如下：
   - note, question, success
   - info, todo
   - warning, attention, caution
@@ -18,11 +19,14 @@
   - example
   - quote
   - tip, abstract
+  - memo, sheet
   - test
 - 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
 
 开发计划（但不保证，有兴趣、有时间、有意愿就做）：
 - [ ] 更新 README，更清晰地展现特性
+- [ ] 英文 README
+- [ ] 发布到 NPM
 - [ ] 支持 [GitHub Alert](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)/[Obsidian Callout 语法](https://help.obsidian.md/callouts)
 - [ ] 可通过选项配置是否启动其他类型或者 MkDocs 类型的 Admonition
 - [ ] 更漂亮的 Admonition，向 MkDocs 靠拢，将实心圆点替换为图标（可配置）
