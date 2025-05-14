@@ -1,5 +1,5 @@
 hexo.extend.filter.register('before_post_render', function (data) {
-  const strRegExp = /(?<indent>^[ \t]*)!!!\s*(?<type>note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test) (?<title>.*\n)(?<content>(?:^\k<indent> {4}.*\n|^\n)+)/;
+  const strRegExp = /(?<indent>^[ \t]*)!!!\s*(?<type>note|question|success|info|todo|warning|attention|caution|failure|missing|danger|bug|error|example|quote|tip|abstract|memo|sheet|test)(?<title> .*)\n(?<content>(?:^\k<indent> {4}.*\n|^\n)+)/;
   let admonitionRegExp = new RegExp(strRegExp, 'gmi');
 
   if (admonitionRegExp.test(data.content)) {
