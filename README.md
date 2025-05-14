@@ -1,6 +1,38 @@
 # 前言
 
-> **是自用插件**，基本是按本人的需求进行添加特性、修复错误。因此下面可能会有多余的功能，如有需要可以自行修改增删。
+本插件最初 fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，但现已完全重写。适配 [Hexo NexT 主题](https://theme-next.js.org/)，修复了很多问题，同时支持更多特性：
+- 修复了 Admonition 内脚注锚点与外部锚点冲突的问题
+  - **破坏性更改**：Admonition 内的脚注会像外部的脚注一样，显示在在文章底部，而非之前的在 Admonition 内底部。2.4.2 是最后一个支持将脚注显示在 Admonition 内部的版本，**但是存在部分已知严重的问题！**
+- 支持在 Admonition 标题部分使用 Markdown 语法
+- 允许 Admonition 整体进行缩进
+  - 但仍要保证 Admonition 正文相较于首行 `!!!` 还有至少 4 个空格
+  - 这允许了在列表语法中间插入 Admonition
+- 广泛支持了 markdown-it 插件，在正文能用什么 markdown-it 插件拓展的 Markdown 语法，在 Admonition 中就能用。
+  - 相较于 2.x.x 版本剥离了 `markdown-it` 依赖，不再需要同时维护 Admonition 与正文两个 markdown-it 渲染器，在 3.x.x 版本中 Admonition 会使用正文的 markdown-it 渲染器，因此正文用的插件 Admonition 也都能用。
+  - 也就是说下面 2.4.2 版本说明中提及的增强 Markdown 语法不再有效，这取决于你如何配置你的正文 markdown-it 渲染器，这不再是本插件的重点。
+- 加入了 question, success, danger, bug, example, quote, tip, abstract, memo, sheet, test 等类型的 admonition（移除了 fail），总共 8 个类别如下：
+  - note, question, success
+  - info, todo
+  - warning, attention, caution
+  - danger, failure, missing, bug, error
+  - example
+  - quote
+  - tip, abstract
+  - test
+- 加入了白天与黑夜模式的支持（适配 Hexo NexT Gemini）
+
+开发计划（但不保证，有兴趣、有时间、有意愿就做）：
+- [ ] 更新 README，更清晰地展现特性
+- [ ] 支持 [GitHub Alert](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)/[Obsidian Callout 语法](https://help.obsidian.md/callouts)
+- [ ] 可通过选项配置是否启动其他类型或者 MkDocs 类型的 Admonition
+- [ ] 更漂亮的 Admonition，向 MkDocs 靠拢，将实心圆点替换为图标（可配置）
+- [ ] 支持 `???` 与 `???+` 类型的 Admonition
+- [ ] 自定义 Admonition（低意愿）
+- [ ] 嵌套 Admonition 支持（低意愿）
+
+下面是 2.4.2 版本的说明，已经过时，不再支持与维护：
+
+<details><summary>2.4.2</summary>
 
 本插件自用，fork 自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，适配 [Hexo NexT 主题](https://theme-next.js.org/)，除继承其特性外，另外加入了额外功能、修复了一些错误：
 
@@ -22,6 +54,8 @@
   - [markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)
   - [markdown-it-task-list-plus](https://github.com/edgardong/markdown-it-task-list-plus)
 
+</details>
+
 ## 安装
 
 因为是自用插件，未发布到 NPM，故不能直接用 `npm i hexo-admonition-lyieu` 进行安装。
@@ -33,6 +67,8 @@ npm i github:pilgrimlyieu/hexo-admonition-lyieu
 ```
 
 ## 使用
+
+<details><summary>下面是 2.x.x 版本可能需要为了避免脚注冲突而做的配置，3.x.x 版本已不再需要</summary>
 
 ### 脚注额外配置
 
@@ -63,7 +99,9 @@ hexo.extend.filter.register('markdown-it:renderer', function(md) {
 
 这样将外部的脚注锚点名规则与 ADM 弄一致，就不会冲突了。
 
-以下内容来自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，对本插件不一定可用。
+</details>
+
+以下内容部分来自 [rqh656418510/hexo-admonition-better](https://github.com/rqh656418510/hexo-admonition-better)，仅保留了部分仍适用于现行版本的内容，但实际效果仍以最终使用为准。
 
 # hexo-admonition-better 插件安装使用指南
 
@@ -79,14 +117,6 @@ Hexo 内容辅助插件，支持将类似 [reStructuredText](https://docutils.so
 
 - 执行 Hexo 的构建操作时，会自动将所需的 CSS 样式添加到 HTML 文件中，一般情况下不再需要手动添加 CSS 样式
 
-## 安装说明
-
-### 安装插件
-
-```bash
-npm install hexo-admonition-better --save
-```
-
 ## 使用指南
 
 ### 语法说明
@@ -99,16 +129,6 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
     提示内容开头留 4 个空格，可以有多行，最后用空行结束此标记。
 
-```
-
-在 Hexo 渲染前，将被转换成如下内容：
-
-```html
-<div class="admonition note ">
-  <p class="admonition-title">hexo-admonition-better 插件使用示例</p>
-  <p>这是基于 hexo-admonition-better 插件渲染的一条提示信息。类型为 note，并设置了自定义标题。</p>
-  <p>提示内容开头留 4 个空格，可以有多行，最后用空行结束此标记。</p>
-</div>
 ```
 
 最终呈现效果如下：
@@ -126,16 +146,6 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 ### 设置/隐藏标题
 
-标题 `title` 是可选的，当未设置时，将以 `type` 作为默认值:
-
-```text
-!!! warning
-    这是一条采用默认标题的警告信息。
-```
-
-效果如下：
-
-![默认标题警告提示块](https://raw.githubusercontent.com/rqh656418510/hexo-admonition-better/master/screenshot/warning.png)
 
 如果不想显示标题，可以将 `title` 设置为 `""`：
 
@@ -163,85 +173,6 @@ hexo-admonition-better 遵循一种简单的语法：每个块都以 `!!!` 开�
 
 ![嵌套效果](https://raw.githubusercontent.com/rqh656418510/hexo-admonition-better/master/screenshot/nesting.png)
 
-### 样式自定义
-
-若希望自定义样式，可以将如下样式放入 Hexo 主题的自定义样式文件中（如：`custom.css`），并按自己喜好修改：
-
-```css
-.admonition {
-  margin: 1.5625em 0;
-  padding: .6rem;
-  overflow: hidden;
-  font-size: .64rem;
-  page-break-inside: avoid;
-  border-left: .3rem solid #42b983;
-  border-radius: .3rem;
-  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
-  background-color: #fafafa;
-}
-
-p.admonition-title {
-  position: relative;
-  margin: -.6rem -.6rem .8em -.6rem !important;
-  padding: .4rem .6rem .4rem 2.5rem;
-  font-weight: 700;
-  background-color:rgba(66, 185, 131, .1);
-}
-
-.admonition-title::before {
-  position: absolute;
-  top: .9rem;
-  left: 1rem;
-  width: 12px;
-  height: 12px;
-  background-color: #42b983;
-  border-radius: 50%;
-  content: ' ';
-}
-
-.info>.admonition-title, .todo>.admonition-title {
-  background-color: rgba(0,184,212,.1);
-}
-
-.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
-  background-color: rgba(255,145,0,.1);
-}
-
-.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
-  background-color: rgba(255,82,82,.1);
-}
-
-.admonition.info, .admonition.todo {
-  border-color: #00b8d4;
-}
-
-.admonition.warning, .admonition.attention, .admonition.caution {
-  border-color: #ff9100;
-}
-
-.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
-  border-color: #ff5252;
-}
-
-.info>.admonition-title::before, .todo>.admonition-title::before {
-  background-color: #00b8d4;
-  border-radius: 50%;
-}
-
-.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
-  background-color: #ff9100;
-  border-radius: 50%;
-}
-
-.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
-  background-color: #ff5252;;
-  border-radius: 50%;
-}
-
-.admonition>:last-child {
-  margin-bottom: 0 !important;
-}
-```
 
 ## 适配 Hexo 主题
 
